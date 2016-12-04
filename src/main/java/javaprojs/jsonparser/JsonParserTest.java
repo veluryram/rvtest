@@ -13,7 +13,7 @@ import java.util.Stack;
  */
 public class JsonParserTest
 {
-    public static Stack<String> fieldNameStack = new Stack<>();
+    public static Stack<String> fieldNameStack = new Stack<String>();
 
     public static JsonParser jp;
 
