@@ -66,11 +66,6 @@
 			<version>${postgresql.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>zeepabyte</groupId>
-			<artifactId>cascade-shiro-jwt</artifactId>
-			<version>0.0.1</version>
-		</dependency>
-		<dependency>
 			<groupId>com.verhas</groupId>
 			<artifactId>license3j</artifactId>
 			<version>1.0.7</version>

@@ -1,6 +1,8 @@
 package javaprojs.jline;
 
+import jline.Terminal;
 import jline.TerminalFactory;
+import jline.WindowsTerminal;
 import jline.console.ConsoleReader;
 
 import java.io.IOException;
@@ -16,9 +18,8 @@ public class MultilineDemo
     {
         try
         {
-            ConsoleReader console = new ConsoleReader();
-            console.getTerminal().setEchoEnabled(false);
-            console.setPrompt("> ");
+            Terminal terminal = TerminalFactory.getFlavor(TerminalFactory.Flavor.WINDOWS);
+            ConsoleReader console = new ConsoleReader("", System.in, System.out, terminal);
             String line;
             StringBuilder commandBuffer = new StringBuilder();
             String prompt = "$ ";
@@ -46,8 +47,9 @@ public class MultilineDemo
         catch (IOException e)
         {
             e.printStackTrace();
-        }
-        finally
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally
         {
             try
             {
