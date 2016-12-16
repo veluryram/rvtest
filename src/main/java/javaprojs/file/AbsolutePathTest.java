@@ -7,7 +7,7 @@ import java.io.File;
  */
 public class AbsolutePathTest {
     static String absolutePathName = "C:/cygwin/tmp/ssbm";
-    static String relativePathName = "tmp/ssbm";
+    static String relativePathName = "ssbm";
 
     public static void main(String[] args) {
         File file1 = new File(absolutePathName);
