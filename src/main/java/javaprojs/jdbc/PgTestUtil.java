@@ -1,48 +1,13 @@
 package javaprojs.jdbc;
 
-/**
- * Created by Ram Velury on 7/27/16.
- */
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.*;
 
-public class PgTestClient
+/**
+ * Created by Ram Velury on 12/15/16.
+ */
+public class PgTestUtil
 {
-
-    protected final static String driverName = "org.postgresql.Driver";
-    protected static String URL = "jdbc:postgresql://localhost:5432/actuals";
-    protected Connection connection;
-
-    public static void main(String[] args) throws ClassNotFoundException, IOException, SQLException
-    {
-        PgTestClient client = new PgTestClient();
-        client.init();
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
-        System.out.print("->");
-        String cmd = "select * from reports limit 1";
-        try
-        {
-            client.query(cmd);
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-            System.out.print("->");
-            cmd = reader.readLine().trim();
-        }
-    }
-
-    private void init() throws ClassNotFoundException, SQLException
-    {
-        Class.forName(driverName);
-        connection = DriverManager.getConnection(URL, "cascade", "cascade");
-    }
-
-    private void query(String queryStmt) throws SQLException
+    static void query(Connection connection, String queryStmt) throws SQLException
     {
         Statement statement = connection.createStatement();
 
@@ -83,5 +48,4 @@ public class PgTestClient
             System.out.print("\n");
         }
     }
-
 }

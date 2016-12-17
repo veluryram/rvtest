@@ -5,6 +5,8 @@ import sun.jvmstat.monitor.MonitoredVm;
 import sun.jvmstat.monitor.MonitoredVmUtil;
 import sun.jvmstat.monitor.VmIdentifier;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,6 +16,7 @@ import java.util.Set;
 public class GetJavaProcesses {
     public static void main(String[] args) {
         try {
+            /*
             MonitoredHost local = MonitoredHost.getMonitoredHost("localhost");
             Set<Integer> vmlist = new HashSet<>(local.activeVms());
             for (Integer id : vmlist) {
@@ -21,6 +24,16 @@ public class GetJavaProcesses {
                 String processname = MonitoredVmUtil.mainClass(vm, true);
                 System.out.printf("%d: %s%n", id, processname);
             }
+            */
+
+            String line;
+            String javaHome = System.getenv("JAVA_HOME");
+            Process p = Runtime.getRuntime().exec(javaHome + "/bin/jps");
+            BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            while ((line = input.readLine()) != null) {
+                System.out.println(line);
+            }
+            input.close();
 
         } catch (Exception e) {
             e.printStackTrace();
