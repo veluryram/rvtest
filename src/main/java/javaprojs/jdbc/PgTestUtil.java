@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.*;
 
-public class PgTestClient
+public class PgTestUtil
 {
 
     protected final static String driverName = "org.postgresql.Driver";
@@ -17,7 +17,7 @@ public class PgTestClient
 
     public static void main(String[] args) throws ClassNotFoundException, IOException, SQLException
     {
-        PgTestClient client = new PgTestClient();
+        PgTestUtil client = new PgTestUtil();
         client.init();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -26,7 +26,7 @@ public class PgTestClient
         String cmd = "select * from reports limit 1";
         try
         {
-            client.query(cmd);
+            client.query(client.connection, cmd);
         }
         catch (SQLException e)
         {
@@ -42,7 +42,7 @@ public class PgTestClient
         connection = DriverManager.getConnection(URL, "cascade", "cascade");
     }
 
-    private void query(String queryStmt) throws SQLException
+    public static void query(Connection connection, String queryStmt) throws SQLException
     {
         Statement statement = connection.createStatement();
 
