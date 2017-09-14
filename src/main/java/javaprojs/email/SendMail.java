@@ -1,9 +1,9 @@
 package javaprojs.email;
 
 import com.sun.mail.smtp.SMTPTransport;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 
 import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
