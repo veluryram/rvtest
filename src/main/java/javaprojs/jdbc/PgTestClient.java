@@ -18,70 +18,15 @@ public class PgTestClient
     public static void main(String[] args) throws ClassNotFoundException, IOException, SQLException
     {
         PgTestClient client = new PgTestClient();
-        client.init();
+        client.connection =  JdbcTestUtil.getConnection(driverName, URL, "", "");
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
-        System.out.print("->");
-        String cmd = "select * from reports limit 1";
         try
         {
-            client.query(cmd);
+            JdbcTestUtil.query(client.connection, "select * from reports limit 1");
         }
         catch (SQLException e)
         {
             e.printStackTrace();
-            System.out.print("->");
-            cmd = reader.readLine().trim();
         }
     }
-
-    private void init() throws ClassNotFoundException, SQLException
-    {
-        Class.forName(driverName);
-        connection = DriverManager.getConnection(URL, "cascade", "cascade");
-    }
-
-    private void query(String queryStmt) throws SQLException
-    {
-        Statement statement = connection.createStatement();
-
-        statement.setMaxRows(5);
-        long beginTime = System.currentTimeMillis();
-        ResultSet rs = null;
-        int count = 1;
-        for (int i = 0; i < count; i++)
-        {
-            rs = statement.executeQuery(queryStmt);
-        }
-        long endTime = System.currentTimeMillis();
-        System.out.println("cost time: " + (endTime - beginTime) / count + " ms");
-
-        ResultSetMetaData rsmd = rs.getMetaData();
-        int cols = rsmd.getColumnCount();
-        for (int i = 1; i <= cols; i++)
-        {
-            System.out.print(rsmd.getColumnName(i) + "\t");
-        }
-        System.out.print("\n");
-        for (int i = 1; i <= cols; i++)
-        {
-            System.out.print("(" + rsmd.getColumnTypeName(i) + ")" + "\t");
-        }
-        System.out.print("\n");
-        for (int i = 1; i <= cols; i++)
-        {
-            System.out.print("(" + rsmd.getColumnType(i) + ")" + "\t");
-        }
-        System.out.print("\n");
-        while (rs.next())
-        {
-            for (int i = 1; i <= cols; i++)
-            {
-                System.out.print(rs.getString(i) + "\t");
-            }
-            System.out.print("\n");
-        }
-    }
-
 }
