@@ -66,6 +66,11 @@
 			<version>${postgresql.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>zeepabyte</groupId>
+			<artifactId>cascade-shiro-jwt</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
 			<groupId>com.verhas</groupId>
 			<artifactId>license3j</artifactId>
 			<version>1.0.7</version>
@@ -74,11 +79,6 @@
 			<groupId>jline</groupId>
 			<artifactId>jline</artifactId>
 			<version>2.14.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.5.2</version>
 		</dependency>
 	</dependencies>
 
