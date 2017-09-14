@@ -12,7 +12,7 @@ public class PgTestClient1
 {
 
     protected final static String driverName = "org.postgresql.Driver";
-    protected static String URL = "jdbc:postgresql://localhost:5432/actuals";
+    protected static String URL = "jdbc:postgresql://chieftain1:5432/actuals";
     protected Connection connection;
 
     public static void main(String[] args) throws ClassNotFoundException, IOException, SQLException
