@@ -11,7 +11,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jackson-core-version>2.7.3</jackson-core-version>
-		<jackson.version>2.7.3</jackson.version>
+		<jackson.version>2.9.8</jackson.version>
 		<jsqlparser.version>0.9.4</jsqlparser.version>
 		<postgresql.version>9.4.1209.jre7</postgresql.version>
 	</properties>
@@ -47,6 +47,20 @@
 			<version>${jsqlparser.version}</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.10</version>
+			<scope>provided</scope>
+		</dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>23.0</version>
+        </dependency>
+
 		<!-- Test Dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -54,21 +68,18 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
+		<!--
 		<dependency>
 			<groupId>net.openhft</groupId>
 			<artifactId>chronicle-map</artifactId>
 			<version>2.4.9</version>
 		</dependency>
+		-->
 
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>${postgresql.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>zeepabyte</groupId>
-			<artifactId>cascade-shiro-jwt</artifactId>
-			<version>0.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.verhas</groupId>
@@ -89,6 +100,16 @@
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>3.5.6</version>
+		</dependency>
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk</artifactId>
+			<version>1.11.688</version>
 		</dependency>
 	</dependencies>
 
